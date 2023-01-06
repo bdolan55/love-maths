@@ -4,22 +4,22 @@
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByTagName("button");
 
-    for(let button of buttons) {
+    for (let button of buttons) {
         button.addEventListener("click", function() {
-            if(this.getAttribute("data-type") === "submit") {
+            if (this.getAttribute("data-type") === "submit") {
                 checkAnswer();
             } else {
                 let gameType = this.getAttribute("data-type");
                 runGame(gameType);
             }
-        })
+        });
     }
 
     document.getElementById("answer-box").addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
             checkAnswer();
         }
-    })
+    });
 
     runGame("addition");
 })
@@ -39,6 +39,7 @@ function runGame(gameType) {
 
     if (gameType === "addition") {
         displayAdditionQuestion(num1, num2);
+
     } else if (gameType === "subtract") {
         displaySubtractQuestion(num1,num2);
     } else if (gameType === "multiply") {
@@ -63,7 +64,7 @@ function checkAnswer() {
     if (isCorrect) {
         alert("Hey you got it right!!");
         incrementScore();
-    }else {
+    } else {
         alert(`Awwww... you answered ${userAnswer}. The correct answer is ${calculatedAnswer[0]}!`);
         incrementWrongAnswer();
     }
@@ -124,7 +125,7 @@ function displayAdditionQuestion(operand1, operand2) {
     document.getElementById('operator').textContent = "+";
 }
 
-function displaySubtractQuestion() {
+function displaySubtractQuestion(operand1, operand2) {
 
     document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
     document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;
